@@ -55,9 +55,9 @@ public class ApplicationRunner {
     }
 
     private static RequestLog newLogger() {
-        Slf4jRequestLog requestLog = new Slf4jRequestLog();
-        requestLog.setLogLatency(true);
-        requestLog.setLogServer(true);
-        return requestLog;
+        Slf4jRequestLog log = new Slf4jRequestLog();
+        log.setLogLatency(true);
+        log.setLogServer(true);
+        return log;
     }
 }
