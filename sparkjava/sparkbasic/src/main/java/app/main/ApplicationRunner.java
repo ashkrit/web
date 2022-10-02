@@ -1,6 +1,9 @@
 package app.main;
 
 
+import app.controller.BookController;
+import app.controller.IndexController;
+import app.controller.LoginController;
 import org.eclipse.jetty.server.*;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
 import org.eclipse.jetty.util.thread.ThreadPool;
@@ -21,9 +24,22 @@ public class ApplicationRunner {
 
         logger.info("Server is starting");
         EmbeddedServers.add(EmbeddedServers.Identifiers.JETTY, new EmbeddedJettyFactory(create(newLogger())));
+        //Spark.staticFiles.externalLocation("C:\\_work\\data\\www");
+        Spark.staticFiles.location("/public");
         Spark.port(8080);
-        Spark.get("/ping", (request, response) -> String.format("Pong @ %s", LocalDateTime.now()));
 
+        //before
+        //Spark.before("*",);
+
+        //routes
+        Spark.get("/ping", (request, response) -> String.format("Pong @ %s", LocalDateTime.now()));
+        Spark.get("/index", IndexController.indexPage);
+        Spark.get("/login", LoginController.serveLoginPage);
+        Spark.post("/login", LoginController.handleLoginPost);
+        Spark.get("/books", BookController.fetchAllBooks);
+        Spark.get("/book/:isbn/", BookController.fetchOneBook);
+
+        //after
     }
 
 
