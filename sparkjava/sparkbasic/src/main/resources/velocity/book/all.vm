@@ -1,6 +1,14 @@
 #parse("/velocity/layout.vm")
 #@mainLayout()
 <h1>$msg.get("BOOKS_HEADING_ALL")</h1>
+<form id="books" method="post">
+            <input type="text" name="searchTerm" placeholder="$msg.get("SEARCH_TEXT")" value="$searchTerm" >
+             <input type="submit" value="$msg.get("SEARCH_BUTTON")">
+        </form>
+
+#if($searchResult)
+        <h2>$searchResult</h2>
+ #end
 <div class="row row-3">
     #foreach($book in $books)
         <div class="col">

@@ -22,7 +22,7 @@ public class BookDao {
             new Book("Alice In Wonderland", "Lewis Carrol", "9780439291491")
     );
 
-    public Iterable<Book> getAllBooks() {
+    public List<Book> getAllBooks() {
         return books;
     }
 

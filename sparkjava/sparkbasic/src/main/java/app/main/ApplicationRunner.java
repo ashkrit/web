@@ -44,6 +44,7 @@ public class ApplicationRunner {
         Spark.post("/login", LoginController.handleLoginPost);
 
         Spark.get("/books", BookController.fetchAllBooks);
+        Spark.post("/books", BookController.fetchAllBooksBySearchTerm);
         Spark.get("/book/:isbn/", BookController.fetchOneBook);
     }
 

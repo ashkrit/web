@@ -30,4 +30,9 @@ public class Book {
     public String getTitle() {
         return title;
     }
+
+    public boolean match(String pattern) {
+        String value = title.toLowerCase() + "\t" + this.author.toLowerCase() + "\t" + this.isbn;
+        return value.contains(pattern.toLowerCase());
+    }
 }
