@@ -21,7 +21,6 @@ public class PageView {
     public static String render(Request request, Map<String, Object> model, String templatePath) {
         model.put("msg", new MessageBundle(getSessionLocale(request)));
         model.put("currentUser", getSessionCurrentUser(request));
-        model.put("WebPath", WebPath.class); // Access application URLs from templates
         return strictVelocityEngine().render(new ModelAndView(model, templatePath));
     }
 

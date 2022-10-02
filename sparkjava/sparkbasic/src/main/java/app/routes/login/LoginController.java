@@ -1,6 +1,7 @@
-package app.controller;
+package app.routes.login;
 
 import app.requests.RequestMethods;
+import app.routes.users.UserController;
 import app.view.PageView;
 import app.view.paths.TemplatePath;
 import spark.Request;
@@ -13,6 +14,7 @@ import java.util.Map;
 import static app.requests.RequestMethods.*;
 
 public class LoginController {
+
     public static Route serveLoginPage = (Request request, Response response) -> {
 
         Map<String, Object> model = new HashMap<>();

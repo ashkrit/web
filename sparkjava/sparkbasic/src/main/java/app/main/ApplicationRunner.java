@@ -1,9 +1,9 @@
 package app.main;
 
 
-import app.controller.BookController;
-import app.controller.IndexController;
-import app.controller.LoginController;
+import app.routes.books.BookController;
+import app.routes.index.IndexController;
+import app.routes.login.LoginController;
 import org.eclipse.jetty.server.*;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
 import org.eclipse.jetty.util.thread.ThreadPool;
@@ -32,14 +32,19 @@ public class ApplicationRunner {
         //Spark.before("*",);
 
         //routes
+        createRoutes();
+        //after
+    }
+
+    private static void createRoutes() {
         Spark.get("/ping", (request, response) -> String.format("Pong @ %s", LocalDateTime.now()));
         Spark.get("/index", IndexController.indexPage);
+
         Spark.get("/login", LoginController.serveLoginPage);
         Spark.post("/login", LoginController.handleLoginPost);
+
         Spark.get("/books", BookController.fetchAllBooks);
         Spark.get("/book/:isbn/", BookController.fetchOneBook);
-
-        //after
     }
 
 

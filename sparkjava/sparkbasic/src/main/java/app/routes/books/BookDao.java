@@ -1,7 +1,9 @@
-package app.controller;
+package app.routes.books;
 
-import com.google.common.collect.*;
-import java.util.*;
+import com.google.common.collect.ImmutableList;
+
+import java.util.List;
+import java.util.Random;
 
 public class BookDao {
 
@@ -30,5 +32,10 @@ public class BookDao {
 
     public Book getRandomBook() {
         return books.get(new Random().nextInt(books.size()));
+    }
+
+
+    public static BookDao create() {
+        return new BookDao();
     }
 }

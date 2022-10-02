@@ -1,4 +1,4 @@
-package app.controller;
+package app.routes.books;
 
 public class Book {
     public final String title;
