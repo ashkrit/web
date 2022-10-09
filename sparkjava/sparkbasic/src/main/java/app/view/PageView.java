@@ -2,7 +2,6 @@ package app.view;
 
 
 import app.view.paths.TemplatePath;
-import app.view.paths.WebPath;
 import org.apache.velocity.app.VelocityEngine;
 import org.eclipse.jetty.http.HttpStatus;
 import spark.ModelAndView;
@@ -21,7 +20,9 @@ public class PageView {
     public static String render(Request request, Map<String, Object> model, String templatePath) {
         model.put("msg", new MessageBundle(getSessionLocale(request)));
         model.put("currentUser", getSessionCurrentUser(request));
-        return strictVelocityEngine().render(new ModelAndView(model, templatePath));
+        String value = strictVelocityEngine().render(new ModelAndView(model, templatePath));
+        System.out.println(value);
+        return value;
     }
 
     public static String getSessionCurrentUser(Request request) {

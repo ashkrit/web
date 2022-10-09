@@ -4,6 +4,7 @@ package app.main;
 import app.routes.books.BookController;
 import app.routes.index.IndexController;
 import app.routes.login.LoginController;
+import app.routes.ping.PingController;
 import org.eclipse.jetty.server.*;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
 import org.eclipse.jetty.util.thread.ThreadPool;
@@ -29,15 +30,21 @@ public class ApplicationRunner {
         Spark.port(8080);
 
         //before
-        //Spark.before("*",);
+        Spark.before("*", (request, response) -> {
+            System.out.println("Processing request " + request.pathInfo());
+        });
 
         //routes
         createRoutes();
         //after
+
+        Spark.after("*", (request, response) -> {
+            System.out.println("Processed request " + request.pathInfo());
+        });
     }
 
     private static void createRoutes() {
-        Spark.get("/ping", (request, response) -> String.format("Pong @ %s", LocalDateTime.now()));
+        Spark.get("/ping", PingController.pong);
         Spark.get("/index", IndexController.indexPage);
 
         Spark.get("/login", LoginController.serveLoginPage);
