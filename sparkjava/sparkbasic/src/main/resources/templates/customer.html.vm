@@ -1,0 +1,23 @@
+*******HTML.template*******
+
+<html>
+  <body>
+    Hello $customer.Name!
+    <p>Use below promotion code to get special rates on your next purchase</p>
+    <table>
+    #foreach( $item in $specialDiscount )
+      #if ( $customer.hasPurchased($item) )
+        <tr>
+          <td>
+            $promo.getPromo( $item )
+          </td>
+        </tr>
+      #end
+    #end
+    </table>
+    <p>
+    Thanks <BR>
+    Velocity Team
+    </p>
+  </body>
+</html>

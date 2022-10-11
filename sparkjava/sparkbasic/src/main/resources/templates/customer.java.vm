@@ -1,0 +1,21 @@
+*******JAVA.template*******
+
+import java.util.*;
+
+public static class Customer {
+        private final String name="$customer.name";
+        private final Set<String> items= new HashSet<>(Arrays.asList(#foreach( $c in $customer.items) #if($foreach.count > 1),#end"$c" #end))
+
+
+        public String getName() {
+            return name;
+        }
+
+        public boolean hasPurchased(String item) {
+            return items.contains(item);
+        }
+
+        public Set<String> getItems() {
+            return items;
+        }
+    }

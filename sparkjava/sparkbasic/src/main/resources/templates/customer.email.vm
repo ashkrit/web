@@ -1,0 +1,16 @@
+*******EMAIL.template*******
+
+Hello $customer.Name,
+
+Good morning from Velocity team! You recently purchase below items
+
+Purchase Items
+-------
+#foreach( $item in $customer.items)
+$item
+#end
+
+Please contact customer support you have any questions about recent order
+
+Thanks
+Velocity Team

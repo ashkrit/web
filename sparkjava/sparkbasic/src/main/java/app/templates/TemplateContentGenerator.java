@@ -6,7 +6,13 @@ import spark.template.velocity.VelocityTemplateEngine;
 
 import java.util.Map;
 
-public class ContentGenerator {
+/*
+ HTML
+ JSON
+ Code like Java/c++ etc
+ SQL
+ */
+public class TemplateContentGenerator {
 
     private static VelocityTemplateEngine strictVelocityEngine() {
         VelocityEngine configuredEngine = new VelocityEngine();

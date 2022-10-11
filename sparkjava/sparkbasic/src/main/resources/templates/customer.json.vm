@@ -1,0 +1,7 @@
+*******JSON.template*******
+
+{
+  "name":"$customer.Name",
+  "purchaseItems":[#foreach( $c in $customer.items)#if($foreach.count > 1),#end"$c" #end]
+
+}

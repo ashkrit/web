@@ -1,0 +1,8 @@
+*******SQL.template*******
+
+SELECT
+    c.name, i.* FROM Customers c , Items i
+WHERE
+    c.name="$customer.name" AND
+    i.customer_id = c.customer_id AND
+    i.items in (#foreach($i in $customer.Items) #if($foreach.count>1) , #end "$i" #end)
